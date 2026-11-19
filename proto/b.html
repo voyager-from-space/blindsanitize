@@ -1,0 +1,12 @@
+<!doctype html><meta charset=utf-8><link rel=stylesheet href=common.css><title>variant B: one drop</title><main>
+<h1>Is your submission blind?</h1>
+<label class=drop for=files><b>Drop your source zip, PDF and supplementary archive here</b>Any mix, in one go. We sort them.<input id=files type=file multiple></label>
+<div class=verdict id=out hidden>
+<h2 id=head></h2><div class=pack id=pack></div>
+<p>Venue <select id=venue><option>Any double-blind venue</option><option>ARR</option><option>NeurIPS 2026</option><option>RTAS 2026</option></select>
+<label for=names>Your names and institutions (finds more)</label><textarea id=names rows=2></textarea>
+<label><input type=checkbox id=cr> This is the camera-ready</label></p></div></main>
+<script>
+const draw=()=>{head.textContent=(names.value?'5':'3')+' things would reveal you';pack.innerHTML='<div>Source: 2</div><div>PDF: 1</div><div>Supplement: 0</div>'};
+files.onchange=()=>{out.hidden=false;draw()};names.oninput=draw;venue.onchange=draw;cr.onchange=draw;
+</script>

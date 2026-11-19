@@ -1,0 +1,6 @@
+body{font:16px/1.5 system-ui,sans-serif;margin:0;background:#f6f7f8;color:#15181a}main{max-width:44rem;margin:0 auto;padding:24px 20px}
+h1{font-size:30px;line-height:1.15;margin:8px 0 12px}label{display:block;font-size:14px;color:#596066;margin:10px 0 4px}
+.slot,.drop{border:2px dashed #aab1b8;border-radius:6px;background:#fff;padding:18px;margin:8px 0}.slot b,.drop b{display:block}
+button{font:inherit;font-weight:600;background:#1f6f5c;color:#fff;border:0;border-radius:6px;padding:10px 16px;margin-top:12px}
+.verdict{border-top:1px solid #dcdfdb;margin-top:24px;padding-top:16px}.pack{display:flex;gap:16px;margin:8px 0}.pack div{flex:1;border-left:3px solid #d6361f;padding-left:10px}
+select,textarea,input[type=text]{font:inherit;padding:6px;width:100%;box-sizing:border-box}

@@ -1,0 +1,14 @@
+<!doctype html><meta charset=utf-8><link rel=stylesheet href=common.css><title>variant A: three slots</title><main>
+<h1>Is your submission blind?</h1>
+<fieldset><legend>Mode</legend><label><input type=radio name=mode value=submit checked> Submitting for review</label><label><input type=radio name=mode value=camera> Camera-ready</label></fieldset>
+<label for=venue>Venue</label><select id=venue><option value="">Choose a venue</option><option>ARR</option><option>NeurIPS 2026</option><option>RTAS 2026</option></select>
+<label for=names>Your names and institutions, one per line</label><textarea id=names rows=3></textarea>
+<div class=slot><b>1. LaTeX source (.zip)</b><input id=src type=file></div>
+<div class=slot><b>2. Compiled PDF</b><input id=pdf type=file></div>
+<div class=slot><b>3. Supplementary archive</b><input id=sup type=file></div>
+<button id=go>Check</button>
+<div class=verdict id=out hidden></div></main>
+<script>
+const fl={};for(const id of['src','pdf','sup'])document.getElementById(id).onchange=e=>fl[id]=e.target.files[0]?.name;
+go.onclick=()=>{out.hidden=false;out.innerHTML='<h2>3 things would reveal you</h2><div class=pack><div>Source: 2</div><div>PDF: 1</div><div>Supplement: 0</div></div>'};
+</script>

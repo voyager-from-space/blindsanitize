@@ -1,0 +1,8 @@
+node_modules
+.identity-denylist
+decisions.tsv
+screenshots/
+test/out/
+__pycache__/
+.DS_Store
+.push.sh

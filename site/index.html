@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>blindsanitize: check that your double-blind submission is blind</title>
+<meta name="description" content="Drop your LaTeX source zip, your PDF and your supplementary archive. blindsanitize shows what would reveal the authors, with the venue's own rule next to each item, and gives back cleaned copies. Has a camera-ready mode. Runs in your browser; nothing is uploaded.">
+<meta property="og:title" content="blindsanitize: check that your double-blind submission is blind">
+<meta property="og:description" content="Source, PDF and supplementary archive checked together, with the venue's own rules. In your browser.">
+<meta property="og:url" content="https://voyager-from-space.github.io/blindsanitize/">
+<link rel="canonical" href="https://voyager-from-space.github.io/blindsanitize/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="./">blindsanitize</a>
+  <a class="quiet" href="https://github.com/voyager-from-space/blindsanitize">Source</a>
+</header>
+<main class="wrap">
+  <section class="intro">
+    <h1>Is your double-blind submission actually blind?</h1>
+    <p class="lede">One author <a href="https://www.reddit.com/r/LanguageTechnology/comments/1sd0vs9/arr_march_2026_disk_rejected/">reported</a> a desk rejection in ARR's March 2026 cycle over a GitHub link in a footnote. Drop your LaTeX source zip, the PDF and the supplementary archive in one go. You see what would reveal the authors, with the venue's own rule beside each item, and you get cleaned copies back. It all runs in this tab; nothing is uploaded.</p>
+  </section>
+
+  <section aria-label="Add your files">
+    <label id="drop" class="drop" for="file">
+      <input id="file" type="file" multiple accept=".zip,.pdf,.tgz,.tar,.gz,application/zip,application/pdf,application/gzip">
+      <span class="drop-title">Drop your files here</span>
+      <span class="drop-sub">Source .zip, PDF, supplementary .zip or .tar.gz, any mix, all at once. They are sorted for you.</span>
+    </label>
+    <p class="alt">No files handy? <button id="sample" class="linkish" type="button">Try a sample submission</button> with planted leaks.</p>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </section>
+
+  <section id="results" class="results" hidden aria-labelledby="res-title">
+    <div class="res-head">
+      <div>
+        <h2 id="res-title"></h2>
+        <p id="res-sub" class="res-sub"></p>
+      </div>
+    </div>
+    <div id="pack" class="pack"></div>
+    <p id="downloads" class="downloads"></p>
+
+    <details class="settings" open>
+      <summary>Settings: venue, your names, mode</summary>
+      <div class="grid">
+        <div>
+          <label for="venue">Venue</label>
+          <select id="venue"></select>
+          <p class="mini" id="venue-link"></p>
+          <label class="check"><input id="camera" type="checkbox"> This is the camera-ready version</label>
+          <label class="check"><input id="strip" type="checkbox" checked> Strip LaTeX comments from the source</label>
+        </div>
+        <div>
+          <label for="names">Author names, one per line</label>
+          <textarea id="names" rows="3" spellcheck="false" autocomplete="off" placeholder="Ada Example"></textarea>
+          <label for="others">Institutions, handles, project names</label>
+          <textarea id="others" rows="3" spellcheck="false" autocomplete="off" placeholder="Acme Lab&#10;adaexample"></textarea>
+          <p class="mini">These stay in this tab. They are searched for in file text, PDF text, links and file names, and never written to the report.</p>
+        </div>
+      </div>
+    </details>
+
+    <div id="camera-panel" class="camera" hidden>
+      <h3 class="sec">Camera-ready: put the real information back</h3>
+      <label for="author-block">Author block (the LaTeX that goes inside <code>\author{…}</code>)</label>
+      <textarea id="author-block" rows="3" spellcheck="false"></textarea>
+      <label for="ack">Acknowledgments text</label>
+      <textarea id="ack" rows="3" spellcheck="false"></textarea>
+      <h4 class="sec2">Anonymized links</h4>
+      <ol id="anon-links" class="rows"></ol>
+    </div>
+
+    <details id="venue-rules" class="rules"><summary id="venue-rules-title"></summary><ol id="venue-rule-list" class="rule-list"></ol></details>
+
+    <div id="findings"></div>
+
+    <h3 class="sec">Does the cleaned source still build, and is the built PDF blind?</h3>
+    <p class="note" id="build-note">Builds the cleaned source in this tab with TeX Live as WebAssembly, then runs the same PDF checks on the PDF it produced. The first build downloads about 177 MB, and about 440 MB if the paper needs packages beyond the common set. It is kept in this browser. Your files are not uploaded.</p>
+    <p class="build-actions"><button id="build-btn" class="btn" type="button">Build and check the PDF</button> <button id="build-stop" class="linkish" type="button" hidden>Stop</button></p>
+    <p id="build-status" class="status" role="status" aria-live="polite"></p>
+    <div id="build-out" class="build-out" hidden></div>
+
+    <h3 class="sec">What this cannot see</h3>
+    <p class="note">Writing style, a well-known system or dataset that points to your group, faces or screenshots inside figures, text drawn inside images, and anything outside the files you dropped. Self-reference and name matching are heuristics: read the list. Cleaning is done on copies; your originals are not touched.</p>
+  </section>
+</main>
+<footer class="wrap foot">
+  <p>Runs in your browser. No account, no upload. <a href="https://github.com/voyager-from-space/blindsanitize">Source</a> (MIT). Venue rules are quoted from the venues' own pages with links; they change each cycle, so open the link before you submit. Not affiliated with any venue. Built by <a href="https://voyager-from-space.github.io">voyager</a>.</p>
+</footer>
+<script src="vendor/jszip.min.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
