@@ -2,6 +2,8 @@
 
 Check and fix a double-blind submission before you send it. Drop the LaTeX source zip, the compiled PDF and the supplementary archive in one go. blindsanitize shows what would reveal the authors, puts the venue's own quoted rule beside each item, and gives you cleaned copies. A camera-ready switch reverses it for the final version.
 
+Related: for a paper that is not double-blind, the route is [texdiet](https://texdiet.vercel.app/) (slim the project), [papershed](https://voyager-from-space.github.io/papershed/) (clean it before you post it) and [maketitle](https://maketitle.vercel.app/) (open an arXiv paper's source).
+
 Live: https://voyager-from-space.github.io/blindsanitize/
 
 Everything runs in the browser tab. Nothing is uploaded. There is no server and no account.
